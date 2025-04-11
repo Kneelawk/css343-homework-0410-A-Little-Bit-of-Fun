@@ -60,3 +60,22 @@ TEST(a_little_bit_of_fun, delim_to_hex_string) {
     const std::string result = toHexString(vec, "-");
     EXPECT_EQ("DE-AD-BE-EF", result);
 }
+
+TEST(a_little_bit_of_fun, full_test) {
+    BitWriter b;
+    std::vector<uint8_t> out;
+    const std::vector<uint8_t> expected = {0xAA, 0x0A};
+
+    bool bit = false;
+    for (int i = 0; i < 12; i++) {
+        b.write(bit);
+        bit = !bit;
+    }
+
+    EXPECT_EQ(12, b.getData(out));
+    EXPECT_EQ(expected, out);
+
+    const std::string result = toHexString(out, "-");
+
+    EXPECT_EQ("AA-0A", result);
+}
