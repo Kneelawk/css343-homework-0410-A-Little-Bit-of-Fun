@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.30)
-project(hello_css343)
+project(css343-homework-0410-A-Little-Bit-of-Fun)
 
 set(MAIN_EXECUTABLE_NAME "${PROJECT_NAME}")
 set(TEST_EXECUTABLE_NAME "${PROJECT_NAME}Test")
