@@ -33,3 +33,18 @@ TEST(a_little_bit_of_fun, write_twelve_bits) {
     EXPECT_EQ(12, b.getData(out));
     EXPECT_EQ(expected, out);
 }
+
+TEST(a_little_bit_of_fun, write_eleven_bits) {
+    BitWriter b;
+    std::vector<uint8_t> out;
+    const std::vector<uint8_t> expected = {0xAA, 0x02};
+
+    bool bit = false;
+    for (int i = 0; i < 11; i++) {
+        b.write(bit);
+        bit = !bit;
+    }
+
+    EXPECT_EQ(11, b.getData(out));
+    EXPECT_EQ(expected, out);
+}
