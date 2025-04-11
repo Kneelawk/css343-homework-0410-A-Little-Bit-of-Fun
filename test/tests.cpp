@@ -30,6 +30,6 @@ TEST(a_little_bit_of_fun, write_twelve_bits) {
         bit = !bit;
     }
 
-    EXPECT_EQ(2, b.getData(out));
+    EXPECT_EQ(12, b.getData(out));
     EXPECT_EQ(expected, out);
 }
