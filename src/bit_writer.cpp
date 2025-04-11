@@ -2,6 +2,8 @@
 // Created by cyan on 4/10/25.
 //
 
+#include <sstream>
+
 #include "bit_writer.h"
 
 void BitWriter::write(const bool bitValue) {
@@ -18,7 +20,7 @@ void BitWriter::write(const bool bitValue) {
     bitIndex++;
 }
 
-size_t BitWriter::getData(std::vector<uint8_t> &out) {
+size_t BitWriter::getData(std::vector<uint8_t> &out) const {
     if (bytes.empty()) {
         return 0;
     }
@@ -27,4 +29,20 @@ size_t BitWriter::getData(std::vector<uint8_t> &out) {
     out = bytes;
 
     return (bytes.size() - 1) * 8 + bitIndex;
+}
+
+std::string toHexString(const std::vector<uint8_t> &bytes, const std::string &delim) {
+    std::stringstream ss;
+    ss << std::hex << std::uppercase;
+
+    bool first = true;
+    for (const uint8_t byte: bytes) {
+        if (!first) {
+            ss << delim;
+        }
+        ss << static_cast<int>(byte);
+        first = false;
+    }
+
+    return ss.str();
 }

@@ -48,3 +48,15 @@ TEST(a_little_bit_of_fun, write_eleven_bits) {
     EXPECT_EQ(11, b.getData(out));
     EXPECT_EQ(expected, out);
 }
+
+TEST(a_little_bit_of_fun, simple_to_hex_string) {
+    const std::vector<uint8_t> vec = {0xDE, 0xAD, 0xBE, 0xEF};
+    const std::string result = toHexString(vec);
+    EXPECT_EQ("DEADBEEF", result);
+}
+
+TEST(a_little_bit_of_fun, delim_to_hex_string) {
+    const std::vector<uint8_t> vec = {0xDE, 0xAD, 0xBE, 0xEF};
+    const std::string result = toHexString(vec, "-");
+    EXPECT_EQ("DE-AD-BE-EF", result);
+}

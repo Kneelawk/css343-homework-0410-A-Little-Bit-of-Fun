@@ -4,7 +4,9 @@
 
 #ifndef BIT_WRITER_H
 #define BIT_WRITER_H
+
 #include <cstdint>
+#include <string>
 #include <vector>
 
 class BitWriter {
@@ -22,7 +24,10 @@ public:
     void write(bool bitValue);
 
     /// Copies all bytes to out, returning the number of bytes written.
-    size_t getData(std::vector<uint8_t> &out);
+    size_t getData(std::vector<uint8_t> &out) const;
 };
+
+/// Writes a vector of bytes to a string, optionally separated by the given delimiter.
+std::string toHexString(const std::vector<uint8_t>& bytes, const std::string &delim = "");
 
 #endif //BIT_WRITER_H
